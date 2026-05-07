@@ -16,10 +16,12 @@ export default function Header() {
           <Link href="/heritage">Our Atelier</Link>
           <Link href="/commissions">Commissions</Link>
         </nav>
-        <Link href="/" className="logo">
-          <div className="logo-arabic">هلال</div>
-          <div className="logo-main">HILAL</div>
-          <div className="logo-sub">— Sacred Calligraphy —</div>
+        <Link href="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
+          <img src="/icon-transparent.png" alt="HILAL Icon" style={{ height: '40px', width: 'auto' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div className="logo-main" style={{ fontSize: '1.4rem', letterSpacing: '0.15em', lineHeight: 1 }}>HILAL</div>
+            <div className="logo-sub" style={{ fontSize: '0.55rem', letterSpacing: '0.15em', opacity: 0.8, marginTop: '4px' }}>SACRED CALLIGRAPHY</div>
+          </div>
         </Link>
         <div className="icon-grp head-nav-r">
           <button aria-label="Menu" className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>

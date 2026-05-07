@@ -5,9 +5,7 @@ export default function Footer() {
     <footer>
       <div className="foot-inner">
         <div>
-          <div className="foot-brand-arabic">هلال</div>
-          <div className="foot-brand">HILAL</div>
-          <div className="foot-tag">— Sacred Calligraphy on Canvas —</div>
+          <img src="/logo-full-cream-centered.png" alt="HILAL Arts" style={{ height: '100px', width: 'auto', marginBottom: '16px', marginLeft: '-8px' }} />
           <p className="foot-desc">A modern atelier honoring a thousand-year tradition. Hand-finished canvases, master calligraphers, museum-grade materials. Shipped worldwide with white-glove care.</p>
         </div>
         <div>
