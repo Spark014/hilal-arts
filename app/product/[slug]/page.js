@@ -1,10 +1,11 @@
 'use client';
 import { products } from '../../../lib/data';
 import { useCart } from '../../../lib/CartContext';
+import { use } from 'react';
 import { notFound } from 'next/navigation';
 
 export default function ProductPage({ params }) {
-  const { slug } = params;
+  const { slug } = use(params);
   const product = products.find(p => p.slug === slug);
   const { addToCart } = useCart();
 

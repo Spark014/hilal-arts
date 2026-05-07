@@ -2,8 +2,8 @@ import { products, collections } from '../../../lib/data';
 import ProductCard from '../../../components/ProductCard';
 import { notFound } from 'next/navigation';
 
-export default function SingleCollection({ params }) {
-  const { slug } = params;
+export default async function SingleCollection({ params }) {
+  const { slug } = await params;
   const collection = collections.find(c => c.id === slug);
   
   if (!collection) {
