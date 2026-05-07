@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { useCart } from '../lib/CartContext';
 import { useState } from 'react';
