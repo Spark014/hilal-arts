@@ -4,128 +4,61 @@ import './page.css';
 export default function Home() {
   return (
     <>
-      {/* HERO Split */}
+      {/* HERO UNIFIED */}
       <section className="hero">
-        <div className="hero-half hero-burgundy">
-          <svg className="corner-orn corner-tl" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="0.9">
-            <path d="M5 5 L40 5 M5 5 L5 40"/>
-            <path d="M5 5 Q35 8 40 35 Q35 60 60 60 Q60 35 35 30"/>
-            <path d="M15 15 Q40 18 50 40 M15 15 Q18 40 40 50"/>
-            <circle cx="50" cy="50" r="8"/>
-            <circle cx="50" cy="50" r="3" fill="currentColor"/>
-            <circle cx="22" cy="22" r="1.5" fill="currentColor"/>
-            <path d="M70 10 Q75 15 80 10 M10 70 Q15 75 10 80" strokeWidth="0.6"/>
-            <circle cx="80" cy="14" r="1" fill="currentColor"/>
-            <circle cx="14" cy="80" r="1" fill="currentColor"/>
-          </svg>
-          <svg className="corner-orn corner-bl" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="0.9">
-            <path d="M5 5 L40 5 M5 5 L5 40"/>
-            <path d="M5 5 Q35 8 40 35 Q35 60 60 60 Q60 35 35 30"/>
-            <path d="M15 15 Q40 18 50 40 M15 15 Q18 40 40 50"/>
-            <circle cx="50" cy="50" r="8"/>
-            <circle cx="50" cy="50" r="3" fill="currentColor"/>
-            <circle cx="22" cy="22" r="1.5" fill="currentColor"/>
-          </svg>
-
-          <div className="hero-eyebrow">EST. ATELIER · ٢٠٢٤</div>
-          <div className="hero-arabic-big">فنّ الخطّ العربي</div>
-          <h1 className="hero-title">Organic<br/>Calligraphy<em>The art of the written word, on canvas.</em></h1>
-          <p className="hero-desc">Hand-composed by master calligraphers across Istanbul, Cairo, and Lahore — finished in our atelier with metallic leaf and archival care.</p>
-          <Link href="/collections" className="hero-btn">Shop the Collection</Link>
-        </div>
-
-        <div className="hero-half hero-olive">
-          <svg className="corner-orn corner-tr" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="0.9">
-            <path d="M5 5 L40 5 M5 5 L5 40"/>
-            <path d="M5 5 Q35 8 40 35 Q35 60 60 60 Q60 35 35 30"/>
-            <path d="M15 15 Q40 18 50 40 M15 15 Q18 40 40 50"/>
-            <circle cx="50" cy="50" r="8"/>
-            <circle cx="50" cy="50" r="3" fill="currentColor"/>
-            <circle cx="22" cy="22" r="1.5" fill="currentColor"/>
-          </svg>
-          <svg className="corner-orn corner-br" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="0.9">
-            <path d="M5 5 L40 5 M5 5 L5 40"/>
-            <path d="M5 5 Q35 8 40 35 Q35 60 60 60 Q60 35 35 30"/>
-            <path d="M15 15 Q40 18 50 40 M15 15 Q18 40 40 50"/>
-            <circle cx="50" cy="50" r="8"/>
-            <circle cx="50" cy="50" r="3" fill="currentColor"/>
-            <circle cx="22" cy="22" r="1.5" fill="currentColor"/>
-          </svg>
-
-          <div className="hero-eyebrow">EXCLUSIVE EDITIONS</div>
-          <div className="hero-arabic-big">المجموعة الذهبيّة</div>
-          <h1 className="hero-title">Master<br/>Compositions<em>Limited atelier pieces, gilded and signed.</em></h1>
-          <p className="hero-desc">Each commissioned canvas bears the seal and signature of its calligrapher — a single, sovereign work, never repeated.</p>
-          <Link href="/commissions" className="hero-btn">Commission a Piece</Link>
-        </div>
-
-        <svg className="hero-medallion" viewBox="0 0 80 80" fill="none">
-          <circle cx="40" cy="40" r="38" fill="#f7ecd5" stroke="#4a0d13" strokeWidth="2"/>
-          <circle cx="40" cy="40" r="32" fill="none" stroke="#b8924b" strokeWidth="0.8"/>
-          <path d="M52 40 A12 12 0 1 1 40 28 A9 9 0 1 0 52 40 Z" fill="#b85427"/>
-          <circle cx="56" cy="32" r="2" fill="#b85427"/>
-        </svg>
-
-        <div className="hero-center">
-          <div className="hero-canvas-stack">
-            <div className="hero-canvas hero-canvas-1">
-              <svg viewBox="0 0 200 270" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="hc1bg" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0" stopColor="#5d1a1f"/>
-                    <stop offset="1" stopColor="#4a0d13"/>
-                  </linearGradient>
-                </defs>
-                <rect width="200" height="270" fill="url(#hc1bg)"/>
-                <rect x="10" y="10" width="180" height="250" fill="none" stroke="#c9a96e" strokeWidth="1"/>
-                <rect x="16" y="16" width="168" height="238" fill="none" stroke="#c9a96e" strokeWidth="0.4" opacity="0.6"/>
-                <g transform="translate(100, 110)">
-                  <g fill="none" stroke="#c9a96e" strokeWidth="1">
-                    <path d="M0 -60 L17 -17 L60 0 L17 17 L0 60 L-17 17 L-60 0 L-17 -17 Z"/>
-                    <path d="M-42 -42 L0 -17 L42 -42 L17 0 L42 42 L0 17 L-42 42 L-17 0 Z"/>
-                    <circle r="38"/>
-                    <circle r="22"/>
-                  </g>
-                  <circle r="10" fill="#b85427"/>
-                  <circle r="4" fill="#c9a96e"/>
-                </g>
-                <g stroke="#c9a96e" strokeWidth="1.4" fill="none" strokeLinecap="round">
-                  <path d="M40 200 Q70 185 100 200 T160 200"/>
-                  <path d="M50 218 Q80 208 100 218 T150 218" opacity="0.6"/>
-                  <circle cx="40" cy="200" r="2" fill="#c9a96e"/>
-                  <circle cx="160" cy="200" r="2" fill="#c9a96e"/>
-                </g>
-              </svg>
+        <div className="hero-frame">
+          <div className="hf-corner hf-tl"></div>
+          <div className="hf-corner hf-tr"></div>
+          <div className="hf-corner hf-bl"></div>
+          <div className="hf-corner hf-br"></div>
+          
+          <div className="hero-content">
+            <div className="hero-left">
+              <div className="hero-eyebrow" style={{ color: 'var(--cream-pale)', opacity: 0.8 }}>EST. ATELIER · ٢٠٢٤</div>
+              <h1 className="hero-title">Organic<br/>Calligraphy</h1>
+              <Link href="/collections" className="hero-btn">Browse Collection</Link>
             </div>
-            <div className="hero-canvas hero-canvas-2">
-              <svg viewBox="0 0 220 295" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="hc2bg" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0" stopColor="#3d4a26"/>
-                    <stop offset="1" stopColor="#2d3919"/>
-                  </linearGradient>
-                </defs>
-                <rect width="220" height="295" fill="url(#hc2bg)"/>
-                <rect x="12" y="12" width="196" height="271" fill="none" stroke="#c9a96e" strokeWidth="1"/>
-                <path d="M40 260 L40 130 Q40 70 110 70 Q180 70 180 130 L180 260 Z" fill="none" stroke="#c9a96e" strokeWidth="1.2"/>
-                <g transform="translate(110, 150)">
-                  <g fill="none" stroke="#c9a96e" strokeWidth="1">
-                    <circle r="40"/>
-                    <circle r="28"/>
-                    <path d="M0 -38 L0 38 M-38 0 L38 0"/>
-                    <path d="M-27 -27 L27 27 M27 -27 L-27 27"/>
-                  </g>
-                  <circle r="8" fill="#b85427"/>
-                </g>
-                <g stroke="#c9a96e" strokeWidth="1.5" fill="none" strokeLinecap="round">
-                  <path d="M50 220 Q90 200 110 220 Q130 240 170 220"/>
-                  <circle cx="50" cy="220" r="2" fill="#c9a96e"/>
-                  <circle cx="170" cy="220" r="2" fill="#c9a96e"/>
-                </g>
-                <g transform="translate(110, 105)">
-                  <path d="M-9 0 A11 11 0 1 1 -1 -8 A8 8 0 1 0 -9 0 Z" fill="#c9a96e"/>
-                </g>
-              </svg>
+            
+            <div className="hero-center">
+              <div className="hero-canvas-stack">
+                <div className="hero-canvas hero-canvas-1">
+                  <svg viewBox="0 0 200 270" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="hc1bg" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0" stopColor="#5d1a1f"/>
+                        <stop offset="1" stopColor="#4a0d13"/>
+                      </linearGradient>
+                    </defs>
+                    <rect width="200" height="270" fill="url(#hc1bg)"/>
+                    <rect x="10" y="10" width="180" height="250" fill="none" stroke="#c9a96e" strokeWidth="1"/>
+                    <g transform="translate(100, 110)">
+                      <circle r="38" fill="none" stroke="#c9a96e" strokeWidth="1"/>
+                      <circle r="10" fill="#b85427"/>
+                    </g>
+                  </svg>
+                </div>
+                <div className="hero-canvas hero-canvas-2">
+                  <svg viewBox="0 0 220 295" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="hc2bg" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0" stopColor="#3d4a26"/>
+                        <stop offset="1" stopColor="#2d3919"/>
+                      </linearGradient>
+                    </defs>
+                    <rect width="220" height="295" fill="url(#hc2bg)"/>
+                    <rect x="12" y="12" width="196" height="271" fill="none" stroke="#c9a96e" strokeWidth="1"/>
+                    <g transform="translate(110, 150)">
+                      <circle r="40" fill="none" stroke="#c9a96e" strokeWidth="1"/>
+                      <circle r="8" fill="#b85427"/>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div className="hero-right">
+              <h1 className="hero-title" style={{ textAlign: 'right' }}>Bridal<br/>Collections.</h1>
+              <Link href="/collections/bridal-gift" className="hero-btn">Discover Gifts</Link>
             </div>
           </div>
         </div>
