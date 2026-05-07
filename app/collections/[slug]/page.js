@@ -2,10 +2,10 @@ import { products, collections } from '../../../lib/data';
 import ProductCard from '../../../components/ProductCard';
 import { notFound } from 'next/navigation';
 
-export default async function SingleCollection({ params }) {
-  const { slug } = await params;
+export default function SingleCollection({ params }) {
+  const { slug } = params;
   const collection = collections.find(c => c.id === slug);
-  
+
   if (!collection) {
     notFound();
   }
@@ -18,7 +18,7 @@ export default async function SingleCollection({ params }) {
         <div style={{ fontFamily: 'var(--font-amiri), serif', fontSize: '2rem', color: 'var(--copper)', marginBottom: '10px' }}>{collection.arabic}</div>
         <h1 style={{ fontFamily: 'var(--font-cinzel), serif', fontSize: '3rem', color: 'var(--burgundy-deep)', marginBottom: '16px' }}>{collection.name}</h1>
       </div>
-      
+
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '60px' }}>
         {/* Filters Sidebar */}
         <aside>
@@ -28,11 +28,11 @@ export default async function SingleCollection({ params }) {
               <li><a href="/collections" style={{ color: 'var(--ink)', textDecoration: 'none', opacity: 0.8 }}>All Pieces</a></li>
               {collections.map(c => (
                 <li key={c.id}>
-                  <a href={`/collections/${c.id}`} style={{ 
-                    color: c.id === slug ? 'var(--burgundy-deep)' : 'var(--ink)', 
-                    textDecoration: 'none', 
+                  <a href={`/collections/${c.id}`} style={{
+                    color: c.id === slug ? 'var(--burgundy-deep)' : 'var(--ink)',
+                    textDecoration: 'none',
                     fontWeight: c.id === slug ? 600 : 400,
-                    opacity: c.id === slug ? 1 : 0.8 
+                    opacity: c.id === slug ? 1 : 0.8
                   }}>
                     {c.name}
                   </a>
