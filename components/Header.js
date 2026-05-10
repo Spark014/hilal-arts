@@ -1,14 +1,22 @@
 'use client';
 import Link from 'next/link';
 import { useCart } from '../lib/CartContext';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Header() {
   const { cartCount, toggleCart } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="head">
+    <header className={`head ${scrolled ? 'head--scrolled' : ''}`} ref={headerRef}>
       <div className="head-inner">
         <nav className="head-nav-l">
           <Link href="/">Home</Link>
@@ -16,11 +24,11 @@ export default function Header() {
           <Link href="/heritage">Our Atelier</Link>
           <Link href="/commissions">Commissions</Link>
         </nav>
-        <Link href="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
-          <img src="/icon-transparent.png" alt="HILAL Icon" style={{ height: '40px', width: 'auto' }} />
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div className="logo-main" style={{ fontSize: '1.4rem', letterSpacing: '0.15em', lineHeight: 1 }}>HILAL</div>
-            <div className="logo-sub" style={{ fontSize: '0.55rem', letterSpacing: '0.15em', opacity: 0.8, marginTop: '4px' }}>SACRED CALLIGRAPHY</div>
+        <Link href="/" className="logo" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px', textDecoration: 'none' }}>
+          <img className="logo-icon" src="/icon-transparent.png" alt="HILAL Icon" style={{ height: '36px', width: 'auto' }} />
+          <div className="logo-text-wrap" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="logo-main" style={{ fontSize: '1.3rem', letterSpacing: '0.15em', lineHeight: 1 }}>HILAL</div>
+            <div className="logo-sub" style={{ fontSize: '0.45rem', letterSpacing: '0.15em', opacity: 0.8, marginTop: '4px' }}>SACRED CALLIGRAPHY</div>
           </div>
         </Link>
         <div className="icon-grp head-nav-r">
@@ -88,6 +96,9 @@ export default function Header() {
         }
         @media (max-width: 1100px) {
           .mobile-menu-btn { display: block; }
+        }
+        @media (max-width: 640px) {
+          .mobile-menu-dropdown.open { padding: 20px 20px; }
         }
       `}</style>
     </header>

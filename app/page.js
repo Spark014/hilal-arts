@@ -79,16 +79,20 @@ export default function Home() {
                 <rect width="200" height="270" fill="url(#hc1bg)"/>
                 <rect x="10" y="10" width="180" height="250" fill="none" stroke="#c9a96e" strokeWidth="1"/>
                 <rect x="16" y="16" width="168" height="238" fill="none" stroke="#c9a96e" strokeWidth="0.4" opacity="0.6"/>
-                <g transform="translate(100, 110)">
-                  <g fill="none" stroke="#c9a96e" strokeWidth="1">
-                    <path d="M0 -60 L17 -17 L60 0 L17 17 L0 60 L-17 17 L-60 0 L-17 -17 Z"/>
-                    <path d="M-42 -42 L0 -17 L42 -42 L17 0 L42 42 L0 17 L-42 42 L-17 0 Z"/>
-                    <circle r="38"/>
-                    <circle r="22"/>
-                  </g>
-                  <circle r="10" fill="#b85427"/>
-                  <circle r="4" fill="#c9a96e"/>
+                {/* Mihrab arch */}
+                <path d="M50 230 L50 120 Q50 55 100 55 Q150 55 150 120 L150 230" fill="none" stroke="#c9a96e" strokeWidth="1.2"/>
+                <path d="M58 230 L58 125 Q58 68 100 68 Q142 68 142 125 L142 230" fill="none" stroke="#c9a96e" strokeWidth="0.6" opacity="0.6"/>
+                {/* Crescent at top of arch */}
+                <g transform="translate(100, 90)">
+                  <path d="M8 0 A12 12 0 1 1 -2 -10 A9 9 0 1 0 8 0 Z" fill="#c9a96e"/>
                 </g>
+                {/* Arabesque curves */}
+                <g stroke="#c9a96e" strokeWidth="0.8" fill="none" opacity="0.5">
+                  <path d="M65 140 Q80 130 100 140 Q120 150 135 140"/>
+                  <path d="M65 155 Q80 145 100 155 Q120 165 135 155"/>
+                  <path d="M70 170 Q85 162 100 170 Q115 178 130 170"/>
+                </g>
+                {/* Bottom arabesque flourish */}
                 <g stroke="#c9a96e" strokeWidth="1.4" fill="none" strokeLinecap="round">
                   <path d="M40 200 Q70 185 100 200 T160 200"/>
                   <path d="M50 218 Q80 208 100 218 T150 218" opacity="0.6"/>
@@ -107,23 +111,25 @@ export default function Home() {
                 </defs>
                 <rect width="220" height="295" fill="url(#hc2bg)"/>
                 <rect x="12" y="12" width="196" height="271" fill="none" stroke="#c9a96e" strokeWidth="1"/>
-                <path d="M40 260 L40 130 Q40 70 110 70 Q180 70 180 130 L180 260 Z" fill="none" stroke="#c9a96e" strokeWidth="1.2"/>
-                <g transform="translate(110, 150)">
-                  <g fill="none" stroke="#c9a96e" strokeWidth="1">
-                    <circle r="40"/>
-                    <circle r="28"/>
-                    <path d="M0 -38 L0 38 M-38 0 L38 0"/>
-                    <path d="M-27 -27 L27 27 M27 -27 L-27 27"/>
-                  </g>
-                  <circle r="8" fill="#b85427"/>
+                {/* Pointed Islamic arch (ogee) */}
+                <path d="M45 265 L45 140 Q45 90 80 70 Q110 55 110 55 Q110 55 140 70 Q175 90 175 140 L175 265" fill="none" stroke="#c9a96e" strokeWidth="1.2"/>
+                <path d="M55 265 L55 145 Q55 100 85 82 Q110 68 110 68 Q110 68 135 82 Q165 100 165 145 L165 265" fill="none" stroke="#c9a96e" strokeWidth="0.6" opacity="0.5"/>
+                {/* Crescent and minaret finial */}
+                <g transform="translate(110, 85)">
+                  <path d="M7 0 A10 10 0 1 1 -1 -8 A7 7 0 1 0 7 0 Z" fill="#c9a96e"/>
+                  <circle cx="12" cy="-6" r="1.5" fill="#c9a96e"/>
                 </g>
+                {/* Interlocking arabesque arches */}
+                <g stroke="#c9a96e" strokeWidth="0.8" fill="none" opacity="0.5">
+                  <path d="M70 160 Q90 145 110 160 Q130 175 150 160"/>
+                  <path d="M70 178 Q90 163 110 178 Q130 193 150 178"/>
+                  <path d="M75 195 Q92 183 110 195 Q128 207 145 195"/>
+                </g>
+                {/* Bottom arabesque */}
                 <g stroke="#c9a96e" strokeWidth="1.5" fill="none" strokeLinecap="round">
-                  <path d="M50 220 Q90 200 110 220 Q130 240 170 220"/>
-                  <circle cx="50" cy="220" r="2" fill="#c9a96e"/>
-                  <circle cx="170" cy="220" r="2" fill="#c9a96e"/>
-                </g>
-                <g transform="translate(110, 105)">
-                  <path d="M-9 0 A11 11 0 1 1 -1 -8 A8 8 0 1 0 -9 0 Z" fill="#c9a96e"/>
+                  <path d="M50 230 Q90 210 110 230 Q130 250 170 230"/>
+                  <circle cx="50" cy="230" r="2" fill="#c9a96e"/>
+                  <circle cx="170" cy="230" r="2" fill="#c9a96e"/>
                 </g>
               </svg>
             </div>
@@ -135,61 +141,23 @@ export default function Home() {
       <section className="mosaic" id="mosaic">
         <div className="mosaic-inner">
 
-          <div className="tile tile-hero">
-            <div className="tile-svg-bg">
-              <svg viewBox="0 0 600 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <radialGradient id="th-bg" cx="0.5" cy="0.5" r="0.7">
-                    <stop offset="0" stopColor="#7a3530" stopOpacity="0.4"/>
-                    <stop offset="1" stopColor="#4a0d13" stopOpacity="0"/>
-                  </radialGradient>
-                </defs>
-                <rect width="600" height="540" fill="url(#th-bg)"/>
-                <rect x="60" y="60" width="480" height="420" fill="none" stroke="#c9a96e" strokeWidth="1.5"/>
-                <rect x="72" y="72" width="456" height="396" fill="none" stroke="#c9a96e" strokeWidth="0.5" opacity="0.6"/>
-                <g transform="translate(300, 270)">
-                  <g fill="none" stroke="#c9a96e" strokeWidth="1.5">
-                    <path d="M0 -150 L40 -40 L150 0 L40 40 L0 150 L-40 40 L-150 0 L-40 -40 Z"/>
-                    <path d="M-106 -106 L0 -40 L106 -106 L40 0 L106 106 L0 40 L-106 106 L-40 0 Z"/>
-                    <circle r="100"/>
-                    <circle r="80"/>
-                    <circle r="60"/>
-                    <circle r="40"/>
-                  </g>
-                  <circle r="22" fill="#b85427" opacity="0.85"/>
-                  <circle r="10" fill="#c9a96e"/>
-                </g>
-                <g stroke="#c9a96e" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.85">
-                  <path d="M150 430 Q220 410 280 430 Q340 450 400 430 Q440 415 450 430"/>
-                  <path d="M170 450 Q230 438 280 450 Q330 462 390 450" opacity="0.5"/>
-                  <circle cx="150" cy="430" r="3" fill="#c9a96e"/>
-                  <circle cx="450" cy="430" r="3" fill="#c9a96e"/>
-                  <circle cx="300" cy="425" r="2" fill="#c9a96e"/>
-                </g>
-                <g fill="#c9a96e" opacity="0.7">
-                  <circle cx="300" cy="100" r="3"/>
-                  <circle cx="280" cy="115" r="1.5"/>
-                  <circle cx="320" cy="115" r="1.5"/>
-                </g>
-              </svg>
-            </div>
-            <div className="tile-content">
+          <div className="tile tile-hero" style={{ backgroundImage: 'url(/product-ayatul-kursi-teal-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className="tile-content" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 45%, rgba(0,0,0,0.2) 75%, transparent)' }}>
               <div>
                 <div className="tile-arabic" style={{ color: 'var(--gold-bright)' }}>آية الكرسي</div>
                 <div className="tile-eyebrow" style={{ color: 'var(--gold-bright)' }}>SIGNATURE PIECE</div>
                 <div className="tile-title-big">Ayat al-Kursi</div>
-                <div className="tile-sub" style={{ color: 'var(--cream-dark)' }}>60 × 48″ · Diwani Script · Hand-Gilded</div>
+                <div className="tile-sub" style={{ color: 'var(--cream-dark)' }}>60 × 30″ · Thuluth Script · Hand-Gilded</div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                <span style={{ fontFamily: 'var(--font-cinzel), serif', color: 'var(--gold-bright)', fontSize: '1.1rem', letterSpacing: '0.1em' }}>$1,890</span>
-                <Link href="/product/ayat-al-kursi" className="tile-btn">View Piece</Link>
+                <span style={{ fontFamily: 'var(--font-cinzel), serif', color: 'var(--gold-bright)', fontSize: '1.1rem', letterSpacing: '0.1em' }}>$350</span>
+                <Link href="/product/ayat-al-kursi-teal" className="tile-btn">View Piece</Link>
               </div>
             </div>
           </div>
 
-          <div className="tile tile-mid-1 tile-burgundy">
-            <div className="tile-orn-bg"></div>
-            <div className="tile-content">
+          <div className="tile tile-mid-1" style={{ backgroundImage: 'url(/product-bismillah-beige-2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className="tile-content" style={{ background: 'linear-gradient(135deg, rgba(74,13,19,0.82) 0%, rgba(74,13,19,0.55) 100%)', color: 'var(--cream-pale)' }}>
               <div>
                 <div className="tile-arabic" style={{ color: 'var(--gold-bright)' }}>مجموعة العروس</div>
                 <div className="tile-eyebrow" style={{ color: 'var(--gold-bright)' }}>NEW ARRIVALS</div>
@@ -200,12 +168,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="tile tile-mid-2 tile-copper">
-            <div className="tile-content" style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div className="tile tile-mid-2" style={{ backgroundImage: 'url(/product-bismillah-beige-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className="tile-content" style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', background: 'linear-gradient(to right, rgba(184,84,39,0.85) 0%, rgba(184,84,39,0.6) 100%)', color: 'var(--cream-pale)' }}>
               <div>
-                <div className="tile-arabic">بسم الله</div>
+                <div className="tile-arabic" style={{ color: 'var(--cream-pale)' }}>بسم الله</div>
                 <div className="tile-title" style={{ fontSize: '1.15rem' }}>Bismillah Series</div>
-                <div className="tile-sub" style={{ marginBottom: 0 }}>From $890</div>
+                <div className="tile-sub" style={{ marginBottom: 0 }}>From $220</div>
               </div>
               <Link href="/collections/quranic-verses" className="tile-btn">Shop →</Link>
             </div>
@@ -218,11 +186,11 @@ export default function Home() {
                 <div className="tile-eyebrow" style={{ color: 'var(--olive)' }}>MOST WANTED</div>
                 <div className="tile-title-big">Atelier<br/>Selections</div>
                 <ul className="tile-info-list">
-                  <li>Ayat al-Kursi <span className="price">$1,890</span></li>
-                  <li>99 Names of Allah <span className="price">$1,580</span></li>
-                  <li>Surah Al-Fatiha <span className="price">$1,240</span></li>
-                  <li>Al-Ikhlas <span className="price">$980</span></li>
-                  <li>Bismillah <span className="price">$890</span></li>
+                  <li>Asmaul Husna Collection <span className="price">$400</span></li>
+                  <li>Ayatul Kursi Collection <span className="price">$350</span></li>
+                  <li>Ya Hayyu Ya Qayyum <span className="price">$250</span></li>
+                  <li>Bismillah Series <span className="price">$220</span></li>
+                  <li>Mini Canvas Sets <span className="price">from $15</span></li>
                 </ul>
               </div>
             </div>
@@ -260,26 +228,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="tile tile-row2-c tile-image">
-            <svg viewBox="0 0 360 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="img-c" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stopColor="#6b2e2a"/>
-                  <stop offset="1" stopColor="#4a0d13"/>
-                </linearGradient>
-              </defs>
-              <rect width="360" height="240" fill="url(#img-c)"/>
-              <rect x="80" y="40" width="200" height="160" fill="#3d4a26" stroke="#c9a96e" strokeWidth="1.5"/>
-              <rect x="88" y="48" width="184" height="144" fill="none" stroke="#c9a96e" strokeWidth="0.5" opacity="0.6"/>
-              <g transform="translate(180, 120)">
-                <g fill="none" stroke="#c9a96e" strokeWidth="0.8">
-                  <path d="M0 -45 L13 -13 L45 0 L13 13 L0 45 L-13 13 L-45 0 L-13 -13 Z"/>
-                  <circle r="30"/>
-                </g>
-                <circle r="6" fill="#b85427"/>
-              </g>
-              <line x1="0" y1="220" x2="360" y2="220" stroke="#c9a96e" strokeWidth="0.5" opacity="0.3"/>
-            </svg>
+          <div className="tile tile-row2-c tile-image" style={{ backgroundImage: 'url(/product-99-names-green-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="tile-image-overlay">
               <div className="o-title">In Your Space</div>
               <div className="o-sub">See pieces hung in real homes</div>
@@ -333,65 +282,53 @@ export default function Home() {
       <section className="heritage" id="heritage">
         <div className="heritage-inner">
 
-          <svg className="heritage-mandala" viewBox="0 0 300 300" fill="none" stroke="currentColor" strokeWidth="0.7">
-            <circle cx="150" cy="150" r="140"/>
-            <circle cx="150" cy="150" r="130" strokeWidth="0.4" opacity="0.6"/>
-            <circle cx="150" cy="150" r="115"/>
+          <svg className="heritage-mandala" viewBox="0 0 300 300" fill="none" stroke="currentColor" strokeWidth="0.8">
+            <circle cx="150" cy="150" r="140" strokeWidth="1.2"/>
+            <circle cx="150" cy="150" r="134" strokeWidth="0.4" opacity="0.6"/>
+            <circle cx="150" cy="150" r="128" strokeWidth="1"/>
             <g transform="translate(150 150)">
-              <g id="petal-l">
-                <path d="M0 -125 Q-8 -110 0 -100 Q8 -110 0 -125 Z"/>
-              </g>
-              <use href="#petal-l" transform="rotate(15)"/>
-              <use href="#petal-l" transform="rotate(30)"/>
-              <use href="#petal-l" transform="rotate(45)"/>
-              <use href="#petal-l" transform="rotate(60)"/>
-              <use href="#petal-l" transform="rotate(75)"/>
-              <use href="#petal-l" transform="rotate(90)"/>
-              <use href="#petal-l" transform="rotate(105)"/>
-              <use href="#petal-l" transform="rotate(120)"/>
-              <use href="#petal-l" transform="rotate(135)"/>
-              <use href="#petal-l" transform="rotate(150)"/>
-              <use href="#petal-l" transform="rotate(165)"/>
-              <use href="#petal-l" transform="rotate(180)"/>
-              <use href="#petal-l" transform="rotate(195)"/>
-              <use href="#petal-l" transform="rotate(210)"/>
-              <use href="#petal-l" transform="rotate(225)"/>
-              <use href="#petal-l" transform="rotate(240)"/>
-              <use href="#petal-l" transform="rotate(255)"/>
-              <use href="#petal-l" transform="rotate(270)"/>
-              <use href="#petal-l" transform="rotate(285)"/>
-              <use href="#petal-l" transform="rotate(300)"/>
-              <use href="#petal-l" transform="rotate(315)"/>
-              <use href="#petal-l" transform="rotate(330)"/>
-              <use href="#petal-l" transform="rotate(345)"/>
-            </g>
-            <circle cx="150" cy="150" r="90"/>
-            <circle cx="150" cy="150" r="78" strokeWidth="0.4" opacity="0.5"/>
-            <g transform="translate(150 150)" strokeWidth="1">
-              <path d="M0 -75 L21 -21 L75 0 L21 21 L0 75 L-21 21 L-75 0 L-21 -21 Z"/>
-              <path d="M-53 -53 L0 -21 L53 -53 L21 0 L53 53 L0 21 L-53 53 L-21 0 Z"/>
-            </g>
-            <circle cx="150" cy="150" r="42"/>
-            <g transform="translate(150 150)">
-              <g id="petal-l-inner">
-                <path d="M0 -38 Q-6 -28 0 -22 Q6 -28 0 -38 Z" fill="currentColor" opacity="0.8"/>
-              </g>
-              <use href="#petal-l-inner" transform="rotate(45)"/>
-              <use href="#petal-l-inner" transform="rotate(90)"/>
-              <use href="#petal-l-inner" transform="rotate(135)"/>
-              <use href="#petal-l-inner" transform="rotate(180)"/>
-              <use href="#petal-l-inner" transform="rotate(225)"/>
-              <use href="#petal-l-inner" transform="rotate(270)"/>
-              <use href="#petal-l-inner" transform="rotate(315)"/>
-            </g>
-            <circle cx="150" cy="150" r="14" fill="currentColor" opacity="0.9"/>
-            <circle cx="150" cy="150" r="6" fill="#f7ecd5" stroke="none"/>
-            <circle cx="150" cy="150" r="2" fill="currentColor" stroke="none"/>
-            <g fill="currentColor">
-              <circle cx="150" cy="48" r="2"/>
-              <circle cx="150" cy="252" r="2"/>
-              <circle cx="48" cy="150" r="2"/>
-              <circle cx="252" cy="150" r="2"/>
+              <defs>
+                <g id="star-12">
+                  <path d="M 0 -128 L 15 -90 L 0 -75 L -15 -90 Z" fill="currentColor"/>
+                  <path d="M 0 -75 Q 15 -55 0 -35 Q -15 -55 0 -75 Z" strokeWidth="1.2"/>
+                  <circle cx="0" cy="-55" r="2" fill="currentColor"/>
+                  <circle cx="0" cy="-90" r="4" fill="#f7ecd5" stroke="currentColor"/>
+                </g>
+                <g id="star-12-alt">
+                  <path d="M 0 -128 Q 15 -105 0 -85 Q -15 -105 0 -128 Z" strokeWidth="0.8"/>
+                </g>
+              </defs>
+              
+              <use href="#star-12" transform="rotate(0)"/>
+              <use href="#star-12" transform="rotate(30)"/>
+              <use href="#star-12" transform="rotate(60)"/>
+              <use href="#star-12" transform="rotate(90)"/>
+              <use href="#star-12" transform="rotate(120)"/>
+              <use href="#star-12" transform="rotate(150)"/>
+              <use href="#star-12" transform="rotate(180)"/>
+              <use href="#star-12" transform="rotate(210)"/>
+              <use href="#star-12" transform="rotate(240)"/>
+              <use href="#star-12" transform="rotate(270)"/>
+              <use href="#star-12" transform="rotate(300)"/>
+              <use href="#star-12" transform="rotate(330)"/>
+              
+              <use href="#star-12-alt" transform="rotate(15)"/>
+              <use href="#star-12-alt" transform="rotate(45)"/>
+              <use href="#star-12-alt" transform="rotate(75)"/>
+              <use href="#star-12-alt" transform="rotate(105)"/>
+              <use href="#star-12-alt" transform="rotate(135)"/>
+              <use href="#star-12-alt" transform="rotate(165)"/>
+              <use href="#star-12-alt" transform="rotate(195)"/>
+              <use href="#star-12-alt" transform="rotate(225)"/>
+              <use href="#star-12-alt" transform="rotate(255)"/>
+              <use href="#star-12-alt" transform="rotate(285)"/>
+              <use href="#star-12-alt" transform="rotate(315)"/>
+              <use href="#star-12-alt" transform="rotate(345)"/>
+
+              {/* 12-point inner star interlacing */}
+              <path d="M 0 -40 L 10 -22 L 35 -20 L 20 -4 L 35 20 L 10 22 L 0 40 L -10 22 L -35 20 L -20 -4 L -35 -20 L -10 -22 Z" strokeWidth="1.2" opacity="0.6"/>
+              <circle cx="0" cy="0" r="22" fill="currentColor"/>
+              <path d="M 0 -14 L 4 -4 L 14 0 L 4 4 L 0 14 L -4 4 L -14 0 L -4 -4 Z" fill="#f7ecd5"/>
             </g>
           </svg>
 
@@ -403,48 +340,50 @@ export default function Home() {
             <Link href="/heritage" className="heritage-btn">Read Our Story</Link>
           </div>
 
-          <svg className="heritage-mandala" viewBox="0 0 300 300" fill="none" stroke="currentColor" strokeWidth="0.7">
-            <circle cx="150" cy="150" r="140"/>
-            <circle cx="150" cy="150" r="130" strokeWidth="0.4" opacity="0.6"/>
-            <circle cx="150" cy="150" r="115"/>
+          <svg className="heritage-mandala" viewBox="0 0 300 300" fill="none" stroke="currentColor" strokeWidth="0.8">
+            <circle cx="150" cy="150" r="140" strokeWidth="1"/>
+            <circle cx="150" cy="150" r="132" strokeWidth="0.4" opacity="0.6"/>
+            <circle cx="150" cy="150" r="126" strokeWidth="1"/>
+            
             <g transform="translate(150 150)">
-              <g id="petal-r">
-                <path d="M0 -125 Q-10 -108 -3 -98 Q0 -100 3 -98 Q10 -108 0 -125 Z"/>
+              <defs>
+                <g id="geom-8-edge">
+                  <path d="M 0 -126 L 16 -100 L 0 -85 L -16 -100 Z" fill="currentColor"/>
+                  <path d="M 0 -85 L 8 -72 L -8 -72 Z" strokeWidth="1"/>
+                  <line x1="0" y1="-105" x2="0" y2="-126" stroke="#f7ecd5" strokeWidth="1"/>
+                </g>
+                <g id="geom-8-edge-alt">
+                  <path d="M 0 -126 L 10 -105 L 0 -85 L -10 -105 Z" strokeWidth="1.2"/>
+                  <circle cx="0" cy="-105" r="3" fill="currentColor"/>
+                </g>
+              </defs>
+              <use href="#geom-8-edge" transform="rotate(0)"/>
+              <use href="#geom-8-edge" transform="rotate(45)"/>
+              <use href="#geom-8-edge" transform="rotate(90)"/>
+              <use href="#geom-8-edge" transform="rotate(135)"/>
+              <use href="#geom-8-edge" transform="rotate(180)"/>
+              <use href="#geom-8-edge" transform="rotate(225)"/>
+              <use href="#geom-8-edge" transform="rotate(270)"/>
+              <use href="#geom-8-edge" transform="rotate(315)"/>
+              
+              <use href="#geom-8-edge-alt" transform="rotate(22.5)"/>
+              <use href="#geom-8-edge-alt" transform="rotate(67.5)"/>
+              <use href="#geom-8-edge-alt" transform="rotate(112.5)"/>
+              <use href="#geom-8-edge-alt" transform="rotate(157.5)"/>
+              <use href="#geom-8-edge-alt" transform="rotate(202.5)"/>
+              <use href="#geom-8-edge-alt" transform="rotate(247.5)"/>
+              <use href="#geom-8-edge-alt" transform="rotate(292.5)"/>
+              <use href="#geom-8-edge-alt" transform="rotate(337.5)"/>
+
+              <g strokeWidth="1.2">
+                <path d="M 0 -72 L 25 -25 L 72 0 L 25 25 L 0 72 L -25 25 L -72 0 L -25 -25 Z" fill="rgba(201,169,110,0.05)" strokeWidth="0.8"/>
+                <rect x="-42" y="-42" width="84" height="84" transform="rotate(0)"/>
+                <rect x="-42" y="-42" width="84" height="84" transform="rotate(45)"/>
               </g>
-              <use href="#petal-r" transform="rotate(20)"/>
-              <use href="#petal-r" transform="rotate(40)"/>
-              <use href="#petal-r" transform="rotate(60)"/>
-              <use href="#petal-r" transform="rotate(80)"/>
-              <use href="#petal-r" transform="rotate(100)"/>
-              <use href="#petal-r" transform="rotate(120)"/>
-              <use href="#petal-r" transform="rotate(140)"/>
-              <use href="#petal-r" transform="rotate(160)"/>
-              <use href="#petal-r" transform="rotate(180)"/>
-              <use href="#petal-r" transform="rotate(200)"/>
-              <use href="#petal-r" transform="rotate(220)"/>
-              <use href="#petal-r" transform="rotate(240)"/>
-              <use href="#petal-r" transform="rotate(260)"/>
-              <use href="#petal-r" transform="rotate(280)"/>
-              <use href="#petal-r" transform="rotate(300)"/>
-              <use href="#petal-r" transform="rotate(320)"/>
-              <use href="#petal-r" transform="rotate(340)"/>
-            </g>
-            <circle cx="150" cy="150" r="90"/>
-            <circle cx="150" cy="150" r="78" strokeWidth="0.4" opacity="0.5"/>
-            <g transform="translate(150 150)" strokeWidth="1">
-              <path d="M0 -75 L19 -33 L65 -38 L34 0 L65 38 L19 33 L0 75 L-19 33 L-65 38 L-34 0 L-65 -38 L-19 -33 Z"/>
-            </g>
-            <circle cx="150" cy="150" r="48"/>
-            <circle cx="150" cy="150" r="36" strokeWidth="1.2"/>
-            <g transform="translate(150 150)">
-              <path d="M14 0 A18 18 0 1 1 -2 -16 A14 14 0 1 0 14 0 Z" fill="currentColor"/>
-              <circle cx="20" cy="-12" r="2.5" fill="currentColor"/>
-            </g>
-            <g fill="currentColor">
-              <circle cx="150" cy="48" r="2"/>
-              <circle cx="150" cy="252" r="2"/>
-              <circle cx="48" cy="150" r="2"/>
-              <circle cx="252" cy="150" r="2"/>
+
+              <circle cx="0" cy="0" r="28" fill="none" strokeWidth="1.5"/>
+              <path d="M 0 -22 L 6 -6 L 22 0 L 6 6 L 0 22 L -6 6 L -22 0 L -6 -6 Z" fill="currentColor"/>
+              <circle cx="0" cy="0" r="4" fill="#f7ecd5" stroke="none"/>
             </g>
           </svg>
         </div>

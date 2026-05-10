@@ -514,17 +514,19 @@
 
 /* Responsive Overrides */
 @media (max-width: 1100px) {
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-half { padding: 60px 40px !important; align-items: flex-start !important; text-align: left !important; }
+  .hero { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; min-height: auto; }
+  .hero-half { padding: 60px 40px; align-items: flex-start; text-align: left; justify-content: flex-start; }
+  .hero-burgundy { padding-right: 40px; padding-bottom: 260px; }
+  .hero-olive { padding-left: 40px; padding-top: 260px; }
   .hero-olive { text-align: left; }
   .hero-olive .hero-eyebrow { justify-content: flex-start; }
   .hero-olive .hero-desc { margin-left: 0; }
   .hero-olive .hero-btn { align-self: flex-start; }
+  .hero-medallion { display: none; }
   .hero-center {
-    position: relative; left: auto; top: auto; transform: none;
-    width: 100%; max-width: 360px; height: 400px; margin: 0 auto;
-    grid-column: 1; grid-row: 2;
-    order: -1;
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 360px; height: 480px; margin: 0;
+    grid-column: auto; grid-row: auto; order: 0;
   }
   .mosaic-inner { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 160px; }
   .tile-hero { grid-column: span 6; grid-row: span 2; }
@@ -537,7 +539,12 @@
   .heritage-mandala { width: 220px; margin: 0 auto; }
 }
 @media (max-width: 640px) {
-  .hero-half { padding: 50px 22px; }
+  .hero-half { padding: 50px 22px; justify-content: flex-start; }
+  .hero-burgundy { padding-right: 22px; padding-bottom: 200px; }
+  .hero-olive { padding-left: 22px; padding-top: 200px; }
+  .hero-center {
+    width: 280px; height: 380px;
+  }
   .mosaic { padding: 50px 18px; }
   .mosaic-inner { grid-template-columns: 1fr; grid-auto-rows: minmax(200px, auto); }
   .tile-hero, .tile-mid-1, .tile-mid-2, .tile-info,

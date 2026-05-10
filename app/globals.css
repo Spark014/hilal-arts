@@ -222,7 +222,7 @@ footer::before {
 /* Responsive */
 @media (max-width: 1100px) {
   .head-nav-l { display: none; }
-  .head-inner { grid-template-columns: auto 1fr auto; }
+  .head-inner { display: flex; justify-content: space-between; align-items: center; }
   .foot-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
 @media (max-width: 640px) {
