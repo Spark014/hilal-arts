@@ -1,0 +1,141 @@
+.ordersPage {
+  min-height: 100vh;
+  padding: 60px 40px;
+  background: var(--cream-pale);
+}
+.ordersContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.ordersArabic {
+  font-family: var(--font-amiri), serif;
+  font-size: 1.5rem;
+  color: var(--copper);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.ordersTitle {
+  font-family: var(--font-cinzel), serif;
+  font-size: 2rem;
+  color: var(--burgundy-deep);
+  text-align: center;
+  margin-bottom: 40px;
+}
+.ordersEmpty {
+  text-align: center;
+  padding: 60px 40px;
+  background: white;
+  border: 1px solid rgba(93,26,31,0.1);
+}
+.ordersEmpty p {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.1rem;
+  color: var(--cream-dark);
+  margin-bottom: 20px;
+}
+.ordersCta {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--burgundy-deep);
+  color: var(--cream-pale);
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.ordersCta:hover {
+  background: var(--copper);
+}
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.orderCard {
+  background: white;
+  border: 1px solid rgba(93,26,31,0.1);
+  padding: 24px;
+}
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(93,26,31,0.08);
+}
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.orderNumber {
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.9rem;
+  color: var(--burgundy-deep);
+}
+.orderDate {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.85rem;
+  color: var(--cream-dark);
+}
+.orderStatus {
+  padding: 4px 12px;
+  color: white;
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+.orderItems {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.95rem;
+}
+.orderItemName {
+  color: var(--ink);
+  flex: 1;
+}
+.orderItemQty {
+  color: var(--cream-dark);
+  margin: 0 12px;
+}
+.orderItemPrice {
+  color: var(--burgundy-deep);
+  font-weight: 600;
+}
+.orderFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(93,26,31,0.08);
+}
+.orderTotalLabel {
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+.orderTotal {
+  font-family: var(--font-cinzel), serif;
+  font-size: 1.2rem;
+  color: var(--burgundy-deep);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .ordersPage { padding: 40px 20px; }
+}

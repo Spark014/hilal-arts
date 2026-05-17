@@ -1,21 +1,28 @@
-import { products, collections } from '../../../lib/data';
-import ProductCard from '../../../components/ProductCard';
-import { notFound } from 'next/navigation';
+import { getProductsByCollection } from '../../../lib/services/products'
+import { getCollections } from '../../../lib/services/collections'
+import { getCollectionBySlug } from '../../../lib/services/collections'
+import ProductCard from '../../../components/ProductCard'
+import { notFound } from 'next/navigation'
 
-export default function SingleCollection({ params }) {
-  const { slug } = params;
-  const collection = collections.find(c => c.id === slug);
+export const revalidate = 3600
+
+export default async function SingleCollection({ params }) {
+  const { slug } = params
+  
+  const [collection, collections, collectionProducts] = await Promise.all([
+    getCollectionBySlug(slug),
+    getCollections(),
+    getProductsByCollection(slug)
+  ])
 
   if (!collection) {
-    notFound();
+    notFound()
   }
-
-  const collectionProducts = products.filter(p => p.collection === slug);
 
   return (
     <div style={{ padding: '60px 40px', maxWidth: '1400px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-        <div style={{ fontFamily: 'var(--font-amiri), serif', fontSize: '2rem', color: 'var(--copper)', marginBottom: '10px' }}>{collection.arabic}</div>
+        <div style={{ fontFamily: 'var(--font-amiri), serif', fontSize: '2rem', color: 'var(--copper)', marginBottom: '10px' }}>{collection.arabic_name || collection.arabic}</div>
         <h1 style={{ fontFamily: 'var(--font-cinzel), serif', fontSize: '3rem', color: 'var(--burgundy-deep)', marginBottom: '16px' }}>{collection.name}</h1>
       </div>
 
@@ -28,11 +35,11 @@ export default function SingleCollection({ params }) {
               <li><a href="/collections" style={{ color: 'var(--ink)', textDecoration: 'none', opacity: 0.8 }}>All Pieces</a></li>
               {collections.map(c => (
                 <li key={c.id}>
-                  <a href={`/collections/${c.id}`} style={{
-                    color: c.id === slug ? 'var(--burgundy-deep)' : 'var(--ink)',
+                  <a href={`/collections/${c.slug}`} style={{
+                    color: c.slug === slug ? 'var(--burgundy-deep)' : 'var(--ink)',
                     textDecoration: 'none',
-                    fontWeight: c.id === slug ? 600 : 400,
-                    opacity: c.id === slug ? 1 : 0.8
+                    fontWeight: c.slug === slug ? 600 : 400,
+                    opacity: c.slug === slug ? 1 : 0.8
                   }}>
                     {c.name}
                   </a>
@@ -58,5 +65,5 @@ export default function SingleCollection({ params }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
