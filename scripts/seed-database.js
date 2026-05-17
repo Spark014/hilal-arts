@@ -369,6 +369,9 @@ async function seed() {
 
     // ── 3. Seed product images ────────────────────────────────
     if (p.images && p.images.length > 0) {
+      // Clear existing images for this product to avoid duplicates
+      await supabase.from('product_images').delete().eq('product_id', productRow.id)
+
       const imageRows = p.images.map((url, i) => ({
         product_id: productRow.id,
         url,
@@ -378,15 +381,20 @@ async function seed() {
 
       const { error: imagesError } = await supabase
         .from('product_images')
-        .upsert(imageRows, { onConflict: 'product_id, url' })
+        .insert(imageRows)
 
       if (imagesError) {
         console.error(`    ✗ Images error for ${p.slug}:`, imagesError)
+      } else {
+        console.log(`    ✓ ${imageRows.length} images`)
       }
     }
 
     // ── 4. Seed product features ──────────────────────────────
     if (p.features && p.features.length > 0) {
+      // Clear existing features for this product to avoid duplicates
+      await supabase.from('product_features').delete().eq('product_id', productRow.id)
+
       const featureRows = p.features.map((text, i) => ({
         product_id: productRow.id,
         text,
@@ -395,15 +403,20 @@ async function seed() {
 
       const { error: featuresError } = await supabase
         .from('product_features')
-        .upsert(featureRows, { onConflict: 'product_id, text' })
+        .insert(featureRows)
 
       if (featuresError) {
         console.error(`    ✗ Features error for ${p.slug}:`, featuresError)
+      } else {
+        console.log(`    ✓ ${featureRows.length} features`)
       }
     }
 
     // ── 5. Seed product customizations ────────────────────────
     if (p.customizations && p.customizations.length > 0) {
+      // Clear existing customizations for this product to avoid duplicates
+      await supabase.from('product_customizations').delete().eq('product_id', productRow.id)
+
       const customizationRows = p.customizations.map((label, i) => ({
         product_id: productRow.id,
         label,
@@ -412,10 +425,12 @@ async function seed() {
 
       const { error: customizationsError } = await supabase
         .from('product_customizations')
-        .upsert(customizationRows, { onConflict: 'product_id, label' })
+        .insert(customizationRows)
 
       if (customizationsError) {
         console.error(`    ✗ Customizations error for ${p.slug}:`, customizationsError)
+      } else {
+        console.log(`    ✓ ${customizationRows.length} customizations`)
       }
     }
   }

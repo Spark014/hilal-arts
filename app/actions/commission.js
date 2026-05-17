@@ -22,6 +22,13 @@ export async function submitCommission(formData) {
   const scriptPreference = (formData.get('scriptPreference') || '').toString().trim()
   const colorPreference = (formData.get('colorPreference') || '').toString().trim()
 
+  // Extract reference image URLs from form data
+  const referenceImages = []
+  for (let i = 1; i <= 3; i++) {
+    const url = formData.get(`referenceImage${i}`)
+    if (url) referenceImages.push(url.toString())
+  }
+
   // ── Validation ────────────────────────────────────────────────
   if (!name || name.length > 200) {
     return { error: 'Name is required (max 200 characters)' }
@@ -48,6 +55,7 @@ export async function submitCommission(formData) {
       budget_range: budgetRange || null,
       script_preference: scriptPreference || null,
       color_preference: colorPreference || null,
+      reference_images: referenceImages.length > 0 ? referenceImages : null,
     })
     .select()
     .single()

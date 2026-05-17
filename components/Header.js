@@ -9,8 +9,12 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState(null);
   const [accountOpen, setAccountOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const headerRef = useRef(null);
   const accountRef = useRef(null);
+  const searchRef = useRef(null);
+  const searchInputRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -48,10 +52,19 @@ export default function Header() {
       if (accountRef.current && !accountRef.current.contains(event.target)) {
         setAccountOpen(false);
       }
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setSearchOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchOpen]);
 
   const handleSignOut = async () => {
     try {
@@ -86,10 +99,32 @@ export default function Header() {
           <button aria-label="Menu" className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
-          <button aria-label="Search">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
-            <span>Search</span>
-          </button>
+          <div className="search-dropdown" ref={searchRef}>
+            {searchOpen ? (
+              <form action="/search" method="GET" className="search-form">
+                <input
+                  ref={searchInputRef}
+                  name="q"
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search..."
+                  className="search-input"
+                />
+                <button type="submit" className="search-submit" aria-label="Search">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+                </button>
+                <button type="button" className="search-close" onClick={() => setSearchOpen(false)} aria-label="Close search">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+              </form>
+            ) : (
+              <button aria-label="Search" onClick={() => setSearchOpen(true)}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+                <span>Search</span>
+              </button>
+            )}
+          </div>
           
           {/* Account dropdown */}
           <div className="account-dropdown" ref={accountRef}>
@@ -249,12 +284,63 @@ export default function Header() {
         .sign-out-btn {
           color: #dc2626;
         }
+
+        /* Search dropdown */
+        .search-dropdown {
+          position: relative;
+        }
+        .search-form {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: var(--cream-pale);
+          border: 1px solid rgba(93,26,31,0.2);
+          padding: 4px;
+          z-index: 1001;
+          width: 280px;
+        }
+        .search-input {
+          flex: 1;
+          background: transparent;
+          border: none;
+          padding: 8px 10px;
+          font-family: var(--font-cormorant), serif;
+          font-size: 0.95rem;
+          color: var(--ink);
+          outline: none;
+        }
+        .search-input::placeholder {
+          color: var(--cream-dark);
+        }
+        .search-submit, .search-close {
+          background: none;
+          border: none;
+          color: var(--burgundy);
+          cursor: pointer;
+          padding: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .search-submit:hover, .search-close:hover {
+          color: var(--burgundy-deep);
+        }
         
         @media (max-width: 1100px) {
           .mobile-menu-btn { display: block; }
+          .search-form {
+            width: 220px;
+          }
         }
         @media (max-width: 640px) {
           .mobile-menu-dropdown.open { padding: 20px 20px; }
+          .search-form {
+            width: 200px;
+          }
         }
       `}</style>
     </header>
