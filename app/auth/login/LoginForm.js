@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+import styles from './LoginForm.module.css';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -42,20 +43,20 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-container">
-        <div className="auth-arabic">تسجيل الدخول</div>
-        <h1 className="auth-title">Welcome Back</h1>
-        <p className="auth-subtitle">Sign in to your HILAL Arts account</p>
+    <div className={styles.authPage}>
+      <div className={styles.authContainer}>
+        <div className={styles.authArabic}>تسجيل الدخول</div>
+        <h1 className={styles.authTitle}>Welcome Back</h1>
+        <p className={styles.authSubtitle}>Sign in to your HILAL Arts account</p>
 
         {error && (
-          <div className="auth-error">
+          <div className={styles.authError}>
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="auth-field">
+        <form onSubmit={handleSubmit} className={styles.authForm}>
+          <div className={styles.authField}>
             <label htmlFor="email">Email</label>
             <input
               id="email"
@@ -67,7 +68,7 @@ export default function LoginForm() {
             />
           </div>
 
-          <div className="auth-field">
+          <div className={styles.authField}>
             <label htmlFor="password">Password</label>
             <input
               id="password"
@@ -79,20 +80,20 @@ export default function LoginForm() {
             />
           </div>
 
-          <div className="auth-forgot">
+          <div className={styles.authForgot}>
             <Link href="/auth/forgot-password">Forgot password?</Link>
           </div>
 
           <button
             type="submit"
-            className="auth-btn"
+            className={styles.authBtn}
             disabled={loading}
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 
-        <div className="auth-footer">
+        <div className={styles.authFooter}>
           Don't have an account?{' '}
           <Link href={`/auth/signup?returnUrl=${encodeURIComponent(returnUrl)}`}>
             Create one

@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isDev = process.env.NODE_ENV === 'development';
+
 const nextConfig = {
   async headers() {
     return [
@@ -25,12 +27,12 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://js.stripe.com https://maps.googleapis.com",
+              `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://js.stripe.com https://maps.googleapis.com`,
               "frame-src https://js.stripe.com https://hooks.stripe.com",
-              "connect-src 'self' https://*.supabase.co https://api.stripe.com",
-              "img-src 'self' data: https://*.supabase.co https://*.stripe.com",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.stripe.com",
+              "img-src 'self' data: blob: https://*.supabase.co https://*.stripe.com",
               "style-src 'self' 'unsafe-inline'",
-              "font-src 'self'",
+              "font-src 'self' https://fonts.gstatic.com",
             ].join('; '),
           },
         ],

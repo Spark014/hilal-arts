@@ -1,6 +1,6 @@
 # HILAL Arts — Remaining Tasks Checklist
 
-## Status: Foundation Complete ✅ | Data Layer Ready | Frontend Still Static
+## Status: Foundation Complete ✅ | Data Layer Ready | Admin Panel Built ✅ | UI Fixes Applied ✅
 
 **What works today:** Homepage, collections, product pages, cart drawer (localStorage), commissions form (fake submission), heritage page, error/404 pages.
 **Database:** Supabase project created, schema migrated (tables + RLS + functions). **Seed not yet run.**
@@ -212,26 +212,53 @@ Add sidebar filters:
 
 ---
 
-## Phase 6: Admin Dashboard (Future / Optional for MVP)
+## Phase 6: Admin Dashboard ✅ DONE
 
-### 6.1 Commission Management (`/admin/commissions`)
-- Table of all commissions (admin bypasses RLS)
-- Status management: New → Contacted → Quoted → Accepted → In Progress → Completed
-- View reference images
-- Add admin notes
+### 6.1 Commission Management (`/admin/commissions`) ✅
+- Table of all commissions with status filters
+- Inline status dropdown (New → Contacted → Quoted → Accepted → In Progress → Completed → Cancelled)
+- Expandable detail rows with message, dimensions, script/color preferences
+- Admin notes per commission
 
-### 6.2 Order Management (`/admin/orders`)
-- All orders with filters by status
-- Update order status (triggers `order_status_history` entry)
+### 6.2 Order Management (`/admin/orders`) ✅
+- All orders with status filter tabs
+- Order detail page with items, customer info, totals
+- Update order status with notes (creates `order_status_history` entry)
 - Add tracking number
-- View customer details
+- Status history timeline
 
-### 6.3 Product Management (`/admin/products`)
-- Edit product details, pricing, stock
-- Upload/reorder images
-- Toggle `is_active`, `is_featured`
+### 6.3 Product Management (`/admin/products`) ✅
+- Full CRUD: create, edit, delete products
+- Inline toggle `is_active`, `is_featured` in products table
+- Product form: name, slug (auto-generated), arabic_name, collection, script, dimensions, canvas_size, price, customization_fee, processing_time, description, calligrapher, image URL, stock
+- Dynamic chip inputs for features, customizations, additional images
+- Search/filter in products table
 
-**Access control:** `is_admin` flag in `profiles` table. Middleware checks role.
+### 6.4 Collection Management (`/admin/collections`) ✅
+- Full CRUD: create, edit, delete collections
+- Name, arabic_name, slug, description, cover image, sort order, active toggle
+
+### 6.5 Dashboard (`/admin`) ✅
+- Stats cards: total revenue, order count, active products, commission count
+- Recent orders table (last 10)
+- Recent commissions table (last 5)
+
+**Access control:** `is_admin` flag in `profiles` table. Server-side auth check in admin layout + `requireAdmin()` guard in all server actions. Uses `SUPABASE_SERVICE_ROLE_KEY` to bypass RLS.
+
+### Files Created
+- `lib/supabase-admin.js` — Service role client
+- `lib/services/admin.js` — Admin data fetching
+- `app/actions/admin.js` — Admin CRUD server actions
+- `app/admin/layout.js` + `AdminShell.js` + `layout.module.css` — Admin shell with sidebar
+- `app/admin/page.js` — Dashboard
+- `app/admin/products/` — Products CRUD (page, ProductsTable, ProductForm, new, [id]/edit)
+- `app/admin/collections/` — Collections CRUD (page, CollectionsTable, CollectionForm, new, [id]/edit)
+- `app/admin/orders/` — Orders (page, [id]/page, [id]/OrderActions)
+- `app/admin/commissions/` — Commissions (page, CommissionsTable)
+
+### UI Fixes Applied ✅
+- **ProductCard.js**: Fixed field name mismatches (`product.image` → `product.image_url`, `product.arabicName` → `product.arabic_name`) with fallbacks
+- **Collection detail page** (`app/collections/[slug]/page.js`): Migrated from inline styles to CSS module with proper responsive breakpoints
 
 ---
 
@@ -305,6 +332,14 @@ Files already exist:
 | Supabase schema | `supabase/migrations/001_initial_schema.sql` | ✅ Done |
 | Browser client | `lib/supabase-client.js` | ✅ Done |
 | Server client | `lib/supabase-server.js` | ✅ Done |
+| Admin client | `lib/supabase-admin.js` | ✅ Done |
+| Admin services | `lib/services/admin.js` | ✅ Done |
+| Admin actions | `app/actions/admin.js` | ✅ Done |
+| Admin dashboard | `app/admin/page.js` | ✅ Done |
+| Admin products | `app/admin/products/*` | ✅ Done |
+| Admin collections | `app/admin/collections/*` | ✅ Done |
+| Admin orders | `app/admin/orders/*` | ✅ Done |
+| Admin commissions | `app/admin/commissions/*` | ✅ Done |
 | Cart actions | `app/actions/cart.js` | ✅ Done |
 | Checkout action | `app/actions/checkout.js` | ✅ Done |
 | Commission action | `app/actions/commission.js` | ✅ Done |
@@ -319,6 +354,8 @@ Files already exist:
 | Seed script | `scripts/seed-database.js` | ✅ Done |
 | Architecture docs | `docs/*.md` (6 files) | ✅ Done |
 | Tests (written) | `__tests__/*.test.js` | ✅ Done (jest pending) |
+| ProductCard UI fix | `components/ProductCard.js` | ✅ Done |
+| Collection detail fix | `app/collections/[slug]/page.js` | ✅ Done |
 
 ---
 
@@ -326,7 +363,7 @@ Files already exist:
 
 1. **Auth providers:** Email/password only, or also Google OAuth?
 2. **Search:** Simple `ilike` for MVP, or full-text search?
-3. **Admin dashboard:** Build now or post-launch?
-4. **Product images:** Keep in `/public` (simple) or move to Supabase Storage (flexible)?
+3. ~~**Admin dashboard:** Build now or post-launch?~~ ✅ **Built!**
+4. **Product images:** Keep as URL input (current) or add Supabase Storage upload to admin panel?
 5. **Shipping:** Free worldwide (current promise) or charge for international?
 6. **Currency:** USD only, or multi-currency (AED, GBP for Middle East/UK customers)?

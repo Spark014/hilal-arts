@@ -71,18 +71,26 @@
     gap: 30px;
   }
   .collectionsSidebar {
-    order: 2;
+    order: 0;
   }
   .sidebarList {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 8px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sidebarList::-webkit-scrollbar {
+    display: none;
   }
   .sidebarLink {
     padding: 6px 14px;
     border: 1px solid rgba(93,26,31,0.15);
     border-radius: 20px;
     font-size: 0.85rem;
+    white-space: nowrap;
   }
   .sidebarLinkActive {
     background: var(--burgundy-deep);

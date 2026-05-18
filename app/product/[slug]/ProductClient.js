@@ -114,7 +114,11 @@ export default function ProductClient({ product, related }) {
           )}
 
           <div className="pdp-actions">
-            <button className={`pdp-add-btn ${addedToCart ? 'added' : ''}`} onClick={handleAddToCart}>
+            <button 
+              className={`pdp-add-btn ${addedToCart ? 'added' : ''}`} 
+              onClick={handleAddToCart}
+              aria-label={addedToCart ? 'Added to cart' : `Add to Cart for $${product.price}`}
+            >
               {addedToCart ? (
                 <><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 13l4 4L19 7"/></svg> Added</>
               ) : (
@@ -563,7 +567,7 @@ export default function ProductClient({ product, related }) {
           .pdp-related { padding: 0 24px 60px; }
         }
         @media (max-width: 640px) {
-          .pdp-main { padding: 0 16px 50px; }
+          .pdp-main { padding: 0 16px 100px; }
           .pdp-breadcrumb { padding: 14px 16px; font-size: 0.75rem; }
           .pdp-title { font-size: 1.6rem; }
           .pdp-arabic { font-size: 1.5rem; }
@@ -571,8 +575,23 @@ export default function ProductClient({ product, related }) {
           .pdp-specs { grid-template-columns: 1fr; }
           .pdp-spec { border-right: none !important; }
           .pdp-thumb { width: 64px; height: 64px; }
-          .pdp-actions { flex-direction: column; }
-          .pdp-wishlist-btn { width: 100%; height: 48px; }
+          .pdp-actions {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            background: var(--cream-pale);
+            border-top: 1px solid rgba(93,26,31,0.1);
+            z-index: 50;
+            box-shadow: 0 -4px 12px rgba(74,13,19,0.05);
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            margin-bottom: 0;
+          }
+          .pdp-add-btn { flex: 1; padding: 14px; }
+          .pdp-wishlist-btn { width: 48px; height: 48px; flex-shrink: 0; }
           .pdp-related { padding: 0 16px 50px; }
           .pdp-related-grid {
             grid-template-columns: repeat(2, 1fr);
